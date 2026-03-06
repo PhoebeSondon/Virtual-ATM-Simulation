@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank ATM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated Background - Gradient Only -->
+    <div class="animated-background">
+        <div class="gradient-bg"></div>
+    </div>
+    
+    <div class="atm-machine">
+        <div class="atm-screen" id="atmScreen">
+            <!-- Welcome/Introduction Screen -->
+            <div class="screen active" id="welcomeScreen">
+                <!-- Global Language Button (Top Right) -->
+                <button class="global-language-btn global-language-btn-fixed" onclick="cycleLanguage()" id="welcomeLanguageBtn" title="Change Language">
+                    🌐 English
+                </button>
+                
+                <div class="welcome-container">
+                    <div class="welcome-header">
+                        <div class="welcome-logo">
+                            <h1>🏦 SecureBank</h1>
+                            <p class="welcome-subtitle" data-translate="welcomeSubtitle">Virtual ATM Simulation</p>
+                            <p class="welcome-tagline" data-translate="welcomeTagline">Practice Today, Bank Confidently Tomorrow.</p>
+                        </div>
+                        <div class="ai-badge-intro">
+                            <span class="ai-icon">🤖</span>
+                            <span data-translate="aiPoweredBanking">AI-Powered Banking</span>
+                        </div>
+                    </div>
+                    
+                    <div class="welcome-content">
+                        <h2 data-translate="welcomeTitle">Welcome to SecureBank Virtual ATM</h2>
+                        <p class="welcome-description">
+                            Experience the future of digital banking with our AI-enhanced virtual ATM simulator built with MEAN Stack. 
+                            This educational platform teaches people of all ages - from 7-year-olds to adults - 
+                            how to safely and confidently use ATM machines in a risk-free virtual environment.
+                        </p>
+                        
+                        <div class="learning-section">
+                            <h3>🎓 What You'll Learn</h3>
+                            <div class="learning-grid">
+                                <div class="learning-item">
+                                    <span class="learning-icon">✅</span>
+                                    <p>How to withdraw and deposit money safely</p>
+                                </div>
+                                <div class="learning-item">
+                                    <span class="learning-icon">✅</span>
+                                    <p>How to transfer money between accounts</p>
+                                </div>
+                                <div class="learning-item">
+                                    <span class="learning-icon">✅</span>
+                                    <p>How to check your balance and print receipts</p>
+                                </div>
+                                <div class="learning-item">
+                                    <span class="learning-icon">✅</span>
+                                    <p>How to use currency exchange features</p>
+                                </div>
+                                <div class="learning-item">
+                                    <span class="learning-icon">✅</span>
+                                    <p>How to keep your PIN and account secure</p>
+                                </div>
+                                <div class="learning-item">
+                                    <span class="learning-icon">✅</span>
+                                    <p>How to understand transaction limits</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">💳</div>
+                                <h3>10 ATM Operations</h3>
+                                <p>Withdrawal, deposit, transfer, balance, history, mini statement, currency exchange, PIN change, receipts, and help</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🤖</div>
+                                <h3>4 AI Systems</h3>
+                                <p>Behavioral biometrics, fraud detection, financial insights, and currency intelligence</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">💱</div>
+                                <h3>9 Currencies</h3>
+                                <p>Real-time exchange rates for USD, EUR, GBP, JPY, PHP, CNY, INR, AUD, CAD</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🌐</div>
+                                <h3>6 Languages</h3>
+                                <p>English, Spanish, Chinese, Japanese, Filipino, and Hindi support</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h3>Financial Insights</h3>
+                                <p>AI-powered spending analysis, predictions, and smart recommendations</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🧾</div>
+                                <h3>Receipt Download</h3>
+                                <p>Generate and download transaction receipts for your records</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">❓</div>
+                                <h3>Interactive Help</h3>
+                                <p>Step-by-step guides and AI assistant for all operations</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🔐</div>
+                                <h3>Secure PIN Change</h3>
+                                <p>Change your PIN securely with current PIN verification</p>
+                            </div>
+                        </div>
+                        
+                        <div class="terms-section">
+                            <h3>⚠️ Important Notice</h3>
+                            <div class="terms-box">
+                                <div class="terms-content">
+                                    <h4>Terms & Conditions</h4>
+                                    <ul>
+                                        <li><strong>Educational Purpose Only:</strong> <span>This is a MEAN Stack simulator for learning and demonstration purposes.</span></li>
+                                        <li><strong>Virtual Currency:</strong> <span>All transactions use virtual money with no real monetary value.</span></li>
+                                        <li><strong>No Real Banking:</strong> <span>This is not connected to any real bank or financial institution.</span></li>
+                                        <li><strong>Data Storage:</strong> <span>All data is stored in MongoDB database on your local server.</span></li>
+                                        <li><strong>4 AI Systems:</strong> <span>Behavioral biometrics, fraud detection, financial insights, and currency intelligence.</span></li>
+                                        <li><strong>Demo Accounts:</strong> <span>Pre-configured demo accounts are provided for testing purposes.</span></li>
+                                    </ul>
+                                    
+                                    <div class="disclaimer">
+                                        <p><strong>Disclaimer:</strong> <span>By proceeding, you acknowledge that this is a virtual banking simulator built with MEAN Stack (MongoDB, Express.js, Node.js, JavaScript). 
+                                        No real financial transactions will occur, and no real money is involved. This platform is designed 
+                                        for educational and demonstration purposes to teach banking operations safely.</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="terms-checkbox">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="acceptTerms">
+                                    <span class="checkmark"></span>
+                                    <span class="checkbox-label">I understand this is a virtual simulator and accept the terms</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-large" onclick="proceedToLogin()" id="proceedBtn" disabled>
+                            Continue to Virtual ATM
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Screen -->
+            <div class="screen" id="loginScreen">
+                <!-- Global Language Button (Top Right) -->
+                <button class="global-language-btn global-language-btn-fixed" onclick="cycleLanguage()" id="loginLanguageBtn" title="Change Language">
+                    🌐 English
+                </button>
+                
+                <div class="bank-logo">
+                    <h1>🏦 SecureBank</h1>
+                    <p>Virtual ATM Web Portal</p>
+                    <small style="color: #999;">Digital Banking Simulation</small>
+                </div>
+                <div class="login-form">
+                    <div class="input-group">
+                        <label data-translate="accountNumber">Account Number</label>
+                        <input type="text" id="accountNumber" data-translate="accountNumberPlaceholder" placeholder="Enter 10-digit account" maxlength="10">
+                    </div>
+                    <div class="input-group">
+                        <label data-translate="pin">PIN</label>
+                        <input type="password" id="pinInput" data-translate="pinPlaceholder" placeholder="Enter 4-digit PIN" maxlength="4">
+                    </div>
+                    <button class="btn btn-primary" onclick="login()" data-translate="loginButton">Login</button>
+                    <div class="demo-info">
+                        <p><strong data-translate="demoAccountsTitle">Demo Accounts:</strong></p>
+                        <p>Account: 1234567890 | PIN: 1234 | Balance: $5,000</p>
+                        <p>Account: 9876543210 | PIN: 5678 | Balance: $10,000</p>
+                        <p style="margin-top: 15px; text-align: center;">
+                            <a href="#" onclick="showWelcomeScreen(); return false;" style="color: #667eea; text-decoration: none; font-size: 12px;">
+                                <span></span>ℹ️ View Introduction & Terms</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Menu -->
+            <div class="screen" id="mainMenu">
+                <!-- Global Language Button -->
+                <button class="global-language-btn" onclick="cycleLanguage()" id="globalLanguageBtn" title="Change Language">
+                    🌐 English
+                </button>
+                
+                <div class="user-info">
+                    <p><span data-translate="welcome">Welcome</span>, <span id="userName"></span></p>
+                    <p class="account-num"><span data-translate="account">Account</span>: <span id="userAccount"></span></p>
+                </div>
+                
+                <div class="balance-card">
+                    <h3 data-translate="availableBalance">Available Balance</h3>
+                    <div class="balance-amount" id="balanceDisplay">$0.00</div>
+                </div>
+                
+                <!-- AI Insights Section -->
+                <div class="ai-insights-card" id="aiInsightsCard"></div>
+                
+                <div class="menu-grid">
+                    <button class="menu-btn" onclick="showBalanceScreen()">
+                        <span class="icon">🧾</span>
+                        <span data-translate="printBalanceReceipt">Print Balance Receipt</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('withdrawScreen')">
+                        <span class="icon">💳</span>
+                        <span data-translate="virtualWithdrawal">Virtual Withdrawal</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('depositScreen')">
+                        <span class="icon">💵</span>
+                        <span data-translate="virtualDeposit">Virtual Deposit</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('transferScreen')">
+                        <span class="icon">🔄</span>
+                        <span data-translate="transfer">Transfer</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('miniStatementScreen')">
+                        <span class="icon">📋</span>
+                        <span data-translate="miniStatement">Mini Statement</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('historyScreen')">
+                        <span class="icon">📜</span>
+                        <span data-translate="fullHistory">Full History</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('currencyScreen')">
+                        <span class="icon">💱</span>
+                        <span data-translate="currencyExchange">Currency Exchange</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('changePinScreen')">
+                        <span class="icon">🔐</span>
+                        <span data-translate="changePin">Change PIN</span>
+                    </button>
+                    <button class="menu-btn" onclick="showScreen('helpScreen')">
+                        <span class="icon">❓</span>
+                        <span data-translate="help">Help</span>
+                    </button>
+                    <button class="menu-btn" onclick="logout()">
+                        <span class="icon">🚪</span>
+                        <span data-translate="logout">Logout</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Balance Check Screen -->
+            <div class="screen" id="balanceScreen">
+                <h2 data-translate="printBalanceReceiptTitle">🧾 Print Balance Receipt</h2>
+                <div class="balance-inquiry-card">
+                    <div class="inquiry-header">
+                        <p>Account: <span id="balanceInquiryAccount"></span></p>
+                        <p>Name: <span id="balanceInquiryName"></span></p>
+                    </div>
+                    <div class="inquiry-balance">
+                        <h3 data-translate="currentBalance">Current Balance</h3>
+                        <div class="inquiry-amount" id="balanceInquiryAmount">$0.00</div>
+                    </div>
+                    <div class="inquiry-info">
+                        <p>✅ Ready to print receipt</p>
+                        <p>Date: <span id="balanceInquiryDate"></span></p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="printBalanceReceipt()" data-translate="printReceipt">Print Receipt</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="backToMainMenu">Back to Main Menu</button>
+            </div>
+
+            <!-- Withdraw Screen -->
+            <div class="screen" id="withdrawScreen">
+                <h2 data-translate="virtualWithdrawalTitle">💳 Virtual Withdrawal</h2>
+                <div class="info-banner">
+                    <p>💡 Select your preferred currency and amount - your virtual balance will be updated instantly</p>
+                </div>
+                
+                <!-- Transaction Limits -->
+                <div class="transaction-limits-box">
+                    <strong>Transaction Limits:</strong> Min: $10 | Max: $1,000 USD
+                </div>
+                
+                <!-- Currency Selector -->
+                <div class="transaction-currency-selector">
+                    <label data-translate="withdrawalCurrency">💱 Withdrawal Currency</label>
+                    <select id="withdrawCurrency" onchange="updateWithdrawCurrency()">
+                        <option value="USD">🇺🇸 USD - US Dollar</option>
+                        <option value="EUR">🇪🇺 EUR - Euro</option>
+                        <option value="GBP">🇬🇧 GBP - British Pound</option>
+                        <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                        <option value="PHP">🇵🇭 PHP - Philippine Peso</option>
+                        <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
+                        <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                        <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                        <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                    </select>
+                </div>
+                
+                <div class="currency-info-box" id="withdrawCurrencyInfo"></div>
+                
+                <div class="quick-amounts" id="withdrawQuickAmounts">
+                    <button class="amount-btn" onclick="withdrawInCurrency(20)">$20</button>
+                    <button class="amount-btn" onclick="withdrawInCurrency(50)">$50</button>
+                    <button class="amount-btn" onclick="withdrawInCurrency(100)">$100</button>
+                    <button class="amount-btn" onclick="withdrawInCurrency(200)">$200</button>
+                    <button class="amount-btn" onclick="withdrawInCurrency(500)">$500</button>
+                </div>
+                
+                <div class="input-group">
+                    <label id="withdrawAmountLabel" data-translate="customAmount">Custom Amount (USD)</label>
+                    <input type="number" id="withdrawAmount" placeholder="Enter amount" oninput="updateWithdrawPreview()">
+                    <div class="currency-preview" id="withdrawPreview"></div>
+                </div>
+                <button class="btn btn-primary" onclick="withdrawCustom()" data-translate="processWithdrawal">Process Virtual Withdrawal</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="cancel">Cancel</button>
+            </div>
+
+            <!-- Deposit Screen -->
+            <div class="screen" id="depositScreen">
+                <h2 data-translate="virtualDepositTitle">💳 Virtual Deposit</h2>
+                <div class="info-banner">
+                    <p>💡 Select your preferred currency and amount - your virtual balance will be updated instantly</p>
+                </div>
+                
+                <!-- Transaction Limits -->
+                <div class="transaction-limits-box">
+                    <strong>Transaction Limits:</strong> Min: $10 | Max: $10,000 USD
+                </div>
+                
+                <!-- Currency Selector -->
+                <div class="transaction-currency-selector">
+                    <label data-translate="depositCurrency">💱 Deposit Currency</label>
+                    <select id="depositCurrency" onchange="updateDepositCurrency()">
+                        <option value="USD">🇺🇸 USD - US Dollar</option>
+                        <option value="EUR">🇪🇺 EUR - Euro</option>
+                        <option value="GBP">🇬🇧 GBP - British Pound</option>
+                        <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                        <option value="PHP">🇵🇭 PHP - Philippine Peso</option>
+                        <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
+                        <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                        <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                        <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                    </select>
+                </div>
+                
+                <div class="currency-info-box" id="depositCurrencyInfo"></div>
+                
+                <div class="input-group">
+                    <label id="depositAmountLabel" data-translate="enterAmount">Enter Amount (USD)</label>
+                    <input type="number" id="depositAmount" placeholder="Enter deposit amount" oninput="updateDepositPreview()">
+                    <div class="currency-preview" id="depositPreview"></div>
+                </div>
+                <button class="btn btn-primary" onclick="deposit()" data-translate="processDeposit">Process Virtual Deposit</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="cancel">Cancel</button>
+            </div>
+
+            <!-- Transfer Screen -->
+            <div class="screen" id="transferScreen">
+                <h2 data-translate="transferMoney">Transfer Money</h2>
+                
+                <!-- Transaction Limits -->
+                <div class="transaction-limits-box">
+                    <strong>Transaction Limits:</strong> Min: $1 | Max: $5,000 USD
+                </div>
+                
+                <div class="input-group">
+                    <label data-translate="toAccountNumber">To Account Number</label>
+                    <input type="text" id="transferAccount" data-translate="toAccountPlaceholder" placeholder="Enter account number" maxlength="10">
+                </div>
+                <div class="input-group">
+                    <label data-translate="amount">Amount</label>
+                    <input type="number" id="transferAmount" data-translate="amountPlaceholder" placeholder="Enter amount">
+                </div>
+                <button class="btn btn-primary" onclick="transfer()" data-translate="transferButton">Transfer</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="cancel">Cancel</button>
+            </div>
+
+            <!-- Transaction History -->
+            <div class="screen" id="historyScreen">
+                <h2 data-translate="transactionHistory">Transaction History</h2>
+                <div class="transaction-list" id="transactionList"></div>
+                <button class="btn btn-primary" onclick="downloadReceipt()" data-translate="downloadReceipt">Download Receipt</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="back">Back</button>
+            </div>
+
+            <!-- Mini Statement Screen -->
+            <div class="screen" id="miniStatementScreen">
+                <h2 data-translate="miniStatementTitle">📋 Mini Statement</h2>
+                <div class="info-banner">
+                    <p>💡 Quick view of your last 5 transactions</p>
+                </div>
+                <div class="transaction-list" id="miniStatementList"></div>
+                <button class="btn btn-primary" onclick="showScreen('historyScreen')" data-translate="viewFullHistory">View Full History</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="backToMainMenu">Back to Main Menu</button>
+            </div>
+
+            <!-- Help/Tutorial Screen -->
+            <div class="screen" id="helpScreen">
+                <h2 data-translate="helpTitle">❓ Help & Tutorial</h2>
+                <div class="help-container">
+                    <div class="help-section">
+                        <h3>🏦 Welcome to SecureBank ATM</h3>
+                        <p>This is an educational simulation to help you learn how to use an ATM safely.</p>
+                    </div>
+                    
+                    <div class="help-section">
+                        <h3>📱 Main Features</h3>
+                        <div class="help-item">
+                            <span class="help-icon">🧾</span>
+                            <div class="help-text">
+                                <strong data-translate="printBalanceReceipt">Print Balance Receipt</strong>
+                                <p>Get a printed receipt showing your current balance</p>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <span class="help-icon">💳</span>
+                            <div class="help-text">
+                                <strong data-translate="virtualWithdrawal">Virtual Withdrawal</strong>
+                                <p>Take money out of your account (virtual money for practice)</p>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <span class="help-icon">💵</span>
+                            <div class="help-text">
+                                <strong data-translate="virtualDeposit">Virtual Deposit</strong>
+                                <p>Put money into your account (virtual money for practice)</p>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <span class="help-icon">🔄</span>
+                            <div class="help-text">
+                                <strong data-translate="transfer">Transfer</strong>
+                                <p>Send money to another account</p>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <span class="help-icon">📋</span>
+                            <div class="help-text">
+                                <strong data-translate="miniStatement">Mini Statement</strong>
+                                <p>Quick view of your last 5 transactions</p>
+                            </div>
+                        </div>
+                        <div class="help-item">
+                            <span class="help-icon">📜</span>
+                            <div class="help-text">
+                                <strong data-translate="fullHistory">Full History</strong>
+                                <p>See all your transactions and download receipts</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="help-section">
+                        <h3>🔒 Safety Tips</h3>
+                        <ul class="help-tips">
+                            <li>✅ Always check your balance before withdrawing</li>
+                            <li>✅ Keep your PIN secret - never share it</li>
+                            <li>✅ Check transaction limits before making large transactions</li>
+                            <li>✅ Always take your receipt</li>
+                            <li>✅ Remember to logout when you're done</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="help-section">
+                        <h3>🤖 AI Features</h3>
+                        <p>This ATM uses AI to:</p>
+                        <ul class="help-tips">
+                            <li>🛡️ Detect suspicious activity and fraud</li>
+                            <li>💡 Provide financial insights and spending patterns</li>
+                            <li>💱 Offer smart currency exchange recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="help-section help-note">
+                        <p><strong>📝 Remember:</strong> This is a practice simulator using virtual money. No real transactions occur!</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="showScreen('mainMenu')" data-translate="backToMainMenu">Back to Main Menu</button>
+            </div>
+
+            <!-- Currency Exchange Screen -->
+            <div class="screen" id="currencyScreen">
+                <h2 data-translate="currencyExchangeMarket">💱 Currency Exchange & Market</h2>
+                
+                <!-- Market News -->
+                <div class="market-news" id="marketNews"></div>
+                
+                <!-- Currency Converter -->
+                <div class="currency-converter">
+                    <h3 data-translate="currencyConverter">Currency Converter</h3>
+                    <div class="converter-row">
+                        <div class="input-group">
+                            <label data-translate="amount">Amount</label>
+                            <input type="number" id="convertAmount" data-translate="enterAmount" placeholder="Enter amount" value="100">
+                        </div>
+                    </div>
+                    <div class="converter-row">
+                        <div class="input-group">
+                            <label data-translate="fromCurrency">From</label>
+                            <select id="fromCurrency">
+                                <option value="USD">🇺🇸 USD</option>
+                                <option value="EUR">🇪🇺 EUR</option>
+                                <option value="GBP">🇬🇧 GBP</option>
+                                <option value="JPY">🇯🇵 JPY</option>
+                                <option value="PHP">🇵🇭 PHP</option>
+                                <option value="CNY">🇨🇳 CNY</option>
+                                <option value="INR">🇮🇳 INR</option>
+                            </select>
+                        </div>
+                        <div class="swap-icon" onclick="swapCurrencies()">⇄</div>
+                        <div class="input-group">
+                            <label data-translate="toCurrency">To</label>
+                            <select id="toCurrency">
+                                <option value="USD">🇺🇸 USD</option>
+                                <option value="EUR">🇪🇺 EUR</option>
+                                <option value="GBP">🇬🇧 GBP</option>
+                                <option value="JPY">🇯🇵 JPY</option>
+                                <option value="PHP" selected>🇵🇭 PHP</option>
+                                <option value="CNY">🇨🇳 CNY</option>
+                                <option value="INR">🇮🇳 INR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="conversion-result" id="conversionResult"></div>
+                    <button class="btn btn-primary" onclick="convertCurrency()" data-translate="convertButton">Convert</button>
+                </div>
+                
+                <!-- Top Movers -->
+                <div class="top-movers" id="topMovers"></div>
+                
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="back">Back</button>
+            </div>
+
+            <!-- Change PIN Screen -->
+            <div class="screen" id="changePinScreen">
+                <h2 data-translate="changePinTitle">Change PIN</h2>
+                <div class="input-group">
+                    <label data-translate="currentPin">Current PIN</label>
+                    <input type="password" id="currentPin" data-translate="currentPinPlaceholder" placeholder="Enter current PIN" maxlength="4">
+                </div>
+                <div class="input-group">
+                    <label data-translate="newPin">New PIN</label>
+                    <input type="password" id="newPin" data-translate="newPinPlaceholder" placeholder="Enter new PIN" maxlength="4">
+                </div>
+                <div class="input-group">
+                    <label data-translate="confirmNewPin">Confirm New PIN</label>
+                    <input type="password" id="confirmPin" data-translate="confirmPinPlaceholder" placeholder="Confirm new PIN" maxlength="4">
+                </div>
+                <button class="btn btn-primary" onclick="changePin()" data-translate="changePinButton">Change PIN</button>
+                <button class="btn btn-secondary" onclick="showScreen('mainMenu')" data-translate="cancel">Cancel</button>
+            </div>
+
+            <!-- Another Transaction Screen -->
+            <div class="screen" id="anotherTransactionScreen">
+                <div class="transaction-complete-card">
+                    <div class="complete-icon">✅</div>
+                    <h2 data-translate="anotherTransactionTitle">Transaction Complete</h2>
+                    <p class="complete-message" id="completeMessage">Your transaction has been processed successfully.</p>
+                    <div class="session-info">
+                        <p>Would you like to perform another transaction?</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="showScreen('mainMenu')" data-translate="continue">Continue</button>
+                <button class="btn btn-secondary" onclick="logout()" data-translate="logout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification"></div>
+    
+    <!-- Session Timeout Warning -->
+    <div class="session-timeout-warning" id="sessionTimeoutWarning">
+        <div class="timeout-header">
+            <span class="timeout-icon">⏰</span>
+            <h4>Session Expiring Soon</h4>
+        </div>
+        <div class="timeout-countdown" id="timeoutCountdown">45</div>
+        <p class="timeout-message">Your session will expire due to inactivity. Would you like to continue?</p>
+        <div class="timeout-actions">
+            <button class="timeout-btn timeout-btn-continue" onclick="continueSession()">Continue Session</button>
+            <button class="timeout-btn timeout-btn-logout" onclick="logout()">Logout Now</button>
+        </div>
+    </div>
+    
+    <!-- Custom Security Alert Modal -->
+    <div class="security-alert-overlay" id="securityAlertOverlay">
+        <div class="security-alert-modal">
+            <div class="alert-header">
+                <div class="alert-icon">⚠️</div>
+                <h2>SECURITY ALERT</h2>
+            </div>
+            <div class="alert-body">
+                <h3 id="alertTitle">Suspicious Activity Detected</h3>
+                <div class="alert-message" id="alertMessage"></div>
+                <div class="alert-details" id="alertDetails"></div>
+            </div>
+            <div class="alert-footer">
+                <button class="alert-btn alert-btn-cancel" id="alertCancelBtn">Cancel Transaction</button>
+                <button class="alert-btn alert-btn-proceed" id="alertProceedBtn">Proceed Anyway</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI Security Dashboard -->
+    <div class="ai-dashboard" id="aiDashboard">
+        <div class="ai-panel">
+            <div class="ai-header">
+                <h3>🤖 AI Assistant</h3>
+                <button class="close-btn" onclick="closeAIDashboard()">×</button>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="ai-tabs">
+                <button class="ai-tab active" onclick="switchAITab('security')">
+                    <span>🛡️</span> Security
+                </button>
+                <button class="ai-tab" onclick="switchAITab('assistant')">
+                    <span>💬</span> Assistant
+                </button>
+            </div>
+            
+            <!-- Security Tab Content -->
+            <div class="ai-tab-content active" id="securityTab">
+                <div class="ai-content">
+                    <div class="security-score">
+                        <h4>Behavioral Analysis</h4>
+                        <div class="score-circle" id="riskScoreCircle">
+                            <span id="riskScoreValue">0</span>
+                            <small>Risk Score</small>
+                        </div>
+                        <p id="riskLevel" class="risk-level">Analyzing...</p>
+                    </div>
+                    <div class="ai-insights" id="aiInsights"></div>
+                </div>
+            </div>
+            
+            <!-- Assistant Tab Content -->
+            <div class="ai-tab-content" id="assistantTab">
+                <div class="ai-content">
+                    <div class="ai-chat-container">
+                        <div class="ai-welcome">
+                            <div class="ai-avatar">🤖</div>
+                            <h4>Hi! I'm your AI Assistant</h4>
+                            <p>I'm here to help you use the ATM. Click any question below!</p>
+                        </div>
+                        
+                        <div class="ai-questions">
+                            <button class="ai-question-btn" onclick="askAI('withdraw')">
+                                💳 How do I withdraw money?
+                            </button>
+                            <button class="ai-question-btn" onclick="askAI('deposit')">
+                                💵 How do I deposit money?
+                            </button>
+                            <button class="ai-question-btn" onclick="askAI('transfer')">
+                                🔄 How do I transfer money?
+                            </button>
+                            <button class="ai-question-btn" onclick="askAI('balance')">
+                                💰 How do I check my balance?
+                            </button>
+                            <button class="ai-question-btn" onclick="askAI('pin')">
+                                🔐 How do I change my PIN?
+                            </button>
+                            <button class="ai-question-btn" onclick="askAI('limits')">
+                                📊 What are the transaction limits?
+                            </button>
+                            <button class="ai-question-btn" onclick="askAI('safe')">
+                                🛡️ How do I stay safe?
+                            </button>
+                            <button class="ai-question-btn" onclick="askAI('currency')">
+                                💱 How does currency exchange work?
+                            </button>
+                        </div>
+                        
+                        <div class="ai-response" id="aiResponse"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Confirmation Modal -->
+    <div class="transaction-confirm-overlay" id="transactionConfirmOverlay">
+        <div class="transaction-confirm-modal">
+            <div class="confirm-header">
+                <h2 id="confirmTitle">Confirm Transaction</h2>
+            </div>
+            <div class="confirm-body">
+                <div class="confirm-icon" id="confirmIcon">💳</div>
+                <div class="confirm-message" id="confirmMessage"></div>
+                <div class="confirm-details" id="confirmDetails"></div>
+            </div>
+            <div class="confirm-footer">
+                <button class="confirm-btn confirm-btn-cancel" id="confirmCancelBtn">Cancel</button>
+                <button class="confirm-btn confirm-btn-proceed" id="confirmProceedBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div class="receipt-modal-overlay" id="receiptModalOverlay">
+        <div class="receipt-modal">
+            <div class="receipt-header">
+                <h2>� Transaction Receipt</h2>
+                <button class="close-btn" onclick="closeReceiptModal()">×</button>
+            </div>
+            <div class="receipt-content" id="receiptContent">
+                <!-- Receipt content will be populated here -->
+            </div>
+            <div class="receipt-footer">
+                <button class="receipt-btn receipt-btn-print" onclick="printReceipt()">
+                    🖨️ Print Receipt
+                </button>
+                <button class="receipt-btn receipt-btn-download" onclick="downloadReceiptFile()">
+                    💾 Download PDF
+                </button>
+                <button class="receipt-btn receipt-btn-cancel" onclick="closeReceiptModal()">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Confirmation Modal -->
+    <div class="transaction-confirm-overlay" id="transactionConfirmOverlay2">
+        <div class="transaction-confirm-modal">
+            <div class="confirm-header">
+                <h2 id="confirmTitle2">Confirm Transaction</h2>
+            </div>
+            <div class="confirm-body">
+                <div class="confirm-icon" id="confirmIcon2">💳</div>
+                <div class="confirm-message" id="confirmMessage2"></div>
+                <div class="confirm-details" id="confirmDetails2"></div>
+            </div>
+            <div class="confirm-footer">
+                <button class="confirm-btn confirm-btn-cancel" id="confirmCancelBtn2">Cancel</button>
+                <button class="confirm-btn confirm-btn-proceed" id="confirmProceedBtn2">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Assistant Button -->
+    <button class="ai-assistant-btn" onclick="toggleAIDashboard()" title="AI Security Monitor">
+        🤖
+    </button>
+    
+    <!-- CRITICAL: Inline checkbox handler to ensure it works -->
+    <script>
+    (function() {
+        console.log('🔧 INLINE SCRIPT: Setting up checkbox handler...');
+        
+        function setupCheckbox() {
+            const checkbox = document.getElementById('acceptTerms');
+            const button = document.getElementById('proceedBtn');
+            
+            console.log('Elements found:', { 
+                checkbox: !!checkbox, 
+                button: !!button,
+                checkboxChecked: checkbox ? checkbox.checked : 'N/A',
+                buttonDisabled: button ? button.disabled : 'N/A'
+            });
+            
+            if (checkbox && button) {
+                // FORCE initial state
+                button.disabled = !checkbox.checked;
+                button.style.pointerEvents = 'auto';
+                checkbox.style.pointerEvents = 'auto';
+                
+                console.log('Initial state set - Button disabled:', button.disabled);
+                
+                // Add change event listener
+                checkbox.addEventListener('change', function() {
+                    console.log('✅ CHECKBOX CHANGED! Checked:', this.checked);
+                    button.disabled = !this.checked;
+                    console.log('Button disabled now:', button.disabled);
+                    
+                    // Force visual update
+                    if (this.checked) {
+                        button.style.opacity = '1';
+                        button.style.cursor = 'pointer';
+                    } else {
+                        button.style.opacity = '0.6';
+                        button.style.cursor = 'not-allowed';
+                    }
+                });
+                
+                // Add click listener to checkbox for debugging
+                checkbox.addEventListener('click', function(e) {
+                    console.log('🖱️ CHECKBOX CLICKED!', e);
+                });
+                
+                // Add click listener to button for debugging
+                button.addEventListener('click', function(e) {
+                    console.log('🖱️ BUTTON CLICKED! Disabled:', this.disabled);
+                    if (this.disabled) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('❌ Button is disabled, click prevented');
+                    } else {
+                        console.log('✅ Button click allowed');
+                    }
+                });
+                
+                console.log('✅ All event listeners attached successfully');
+            } else {
+                console.error('❌ Could not find checkbox or button!');
+            }
+        }
+        
+        // Try immediately
+        if (document.readyState === 'loading') {
+            console.log('Document still loading, waiting for DOMContentLoaded...');
+            document.addEventListener('DOMContentLoaded', setupCheckbox);
+        } else {
+            console.log('Document already loaded, setting up immediately...');
+            setupCheckbox();
+        }
+        
+        // Also try after a delay as fallback
+        setTimeout(function() {
+            console.log('🔄 Fallback: Re-running setup after 500ms...');
+            setupCheckbox();
+        }, 500);
+    })();
+    </script>
+    
+    <!-- Scripts with version-based cache busting (v=9) -->
+    <!-- <script src="rain-animation.js"></script> DISABLED - animated background removed -->
+    <script>
+        // Version-based cache busting - increment version after file changes
+        const version = 9; // Updated after cleaning introduction screen content
+        
+        // Load scripts with version to prevent caching
+        const scripts = [
+            'config.js',
+            'api-service.js',
+            'ai-currency.js',
+            'ai-security.js',
+            'script.js',
+            'receipt-modal.js'
+        ];
+        
+        scripts.forEach(script => {
+            const scriptTag = document.createElement('script');
+            scriptTag.src = `${script}?v=${version}`;
+            document.body.appendChild(scriptTag);
+        });
+    </script>
+    <script>
+        // Wait for scripts to load, then clear OLD localStorage data for backend mode
+        window.addEventListener('load', function() {
+            if (typeof APP_CONFIG !== 'undefined' && APP_CONFIG.USE_BACKEND) {
+                if (!sessionStorage.getItem('backendModeInitialized')) {
+                    console.log('🔄 Clearing OLD localStorage data for backend mode...');
+                    
+                    // Save the auth token if it exists
+                    const savedToken = localStorage.getItem('authToken');
+                    
+                    // Clear everything
+                    localStorage.clear();
+                    
+                    // Restore the auth token
+                    if (savedToken) {
+                        localStorage.setItem('authToken', savedToken);
+                        console.log('✅ Auth token preserved');
+                    }
+                    
+                    sessionStorage.setItem('backendModeInitialized', 'true');
+                    console.log('✅ localStorage cleared - using backend mode');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
