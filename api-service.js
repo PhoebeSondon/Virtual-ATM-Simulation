@@ -1,7 +1,8 @@
 // API Service - Handles all backend communication
 // This replaces localStorage with real API calls to the MEAN Stack backend
 
-const API_BASE_URL = 'http://localhost:3000/api';
+// Use API_BASE_URL from config.js (which auto-detects localhost vs production)
+const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || 'http://localhost:3000/api';
 
 class APIService {
     constructor() {
