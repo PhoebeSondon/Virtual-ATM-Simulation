@@ -6,7 +6,10 @@ const APP_CONFIG = {
     USE_BACKEND: true, // Set to false to use localStorage mode
     
     // API Configuration
-    API_BASE_URL: 'http://localhost:3000/api',
+    // Automatically use the correct URL based on environment
+    API_BASE_URL: window.location.hostname === 'localhost' 
+        ? 'http://localhost:3000/api'  // Local development
+        : `${window.location.origin}/api`,  // Production (deployed)
     
     // Feature flags
     ENABLE_AI_SECURITY: true,

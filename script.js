@@ -2456,42 +2456,44 @@ async function performDeposit(amount, displayCurrency = null, displayAmount = nu
 function transfer() {
     const toAccount = document.getElementById('transferAccount').value;
     const amount = parseFloat(document.getElementById('transferAmount').value);
-    
+
     if (!toAccount || !amount) {
         showNotification(tc('pleaseEnterAccountAndAmount'), 'error');
         return;
     }
-    
-    if (!accounts[toAccount]) {
+
+    // Only validate against localStorage accounts if NOT using backend
+    if (!APP_CONFIG.USE_BACKEND && !accounts[toAccount]) {
         showNotification(tc('invalidAccount'), 'error');
         return;
     }
-    
+
     if (toAccount === currentAccount) {
         showNotification(tc('cannotTransferSame'), 'error');
         return;
     }
-    
+
     if (amount <= 0) {
         showNotification(tc('pleaseEnterValid'), 'error');
         return;
     }
-    
-    if (accounts[currentAccount].balance < amount) {
+
+    // Only check localStorage balance if NOT using backend
+    if (!APP_CONFIG.USE_BACKEND && accounts[currentAccount].balance < amount) {
         showNotification(tc('insufficientFunds'), 'error');
         return;
     }
-    
+
     // AI Anomaly Detection for transfers
     const anomalyAnalysis = anomalyDetector.analyzeTransaction(
-        currentAccount, 
-        'Transfer', 
+        currentAccount,
+        'Transfer',
         amount
     );
-    
+
     if (anomalyAnalysis.isAnomaly && anomalyAnalysis.anomalyScore > 60) {
         showNotification(`🚨 ${tc('aiAlert')}: ${anomalyAnalysis.details}`, 'error');
-        
+
         setTimeout(() => {
             if (confirm(`${tc('unusualTransferDetected')} (${tc('riskLabel')}: ${anomalyAnalysis.anomalyScore}/100).\n\n${tc('proceedQuestion')}?`)) {
                 performTransfer(toAccount, amount, anomalyAnalysis);
@@ -2499,9 +2501,10 @@ function transfer() {
         }, 500);
         return;
     }
-    
+
     performTransfer(toAccount, amount, anomalyAnalysis);
 }
+
 
 async function performTransfer(toAccount, amount, anomalyAnalysis) {
     const toAccountName = accounts[toAccount] ? accounts[toAccount].name : toAccount;
